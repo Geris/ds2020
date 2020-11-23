@@ -1,0 +1,36 @@
+
+diccionario_conductores.pdf tiene el diccionario de datos (consistente con nuestro DER).
+documentacion api: tiene las rutas que se generaron para insertar, actualizar o modificar datos.
+    importante: al insertar datos verificar la consistencia, por ej, 
+    si quiero hacer un POST de un domicilio 
+    tengo que tener previamente la localidad a la que pertence.
+    Hay un ejemplo de como crearia un PerfilConductor.
+
+    Hasta ahora hay cargados en la base: una persona, y todos los estados. 
+    
+
+Base de datos: 
+
+https://remotemysql.com/
+    user: gerardo.a.l@hotmail.com
+    pwd: 85AJZ5#fMcEVkdL
+
+    db name: ag91RCbMpS
+    db user: ag91RCbMpS
+    db pwd: R731je5HCp
+
+en el package.json estan incluidas express, body-parser y nodemon;
+solo es necesario express.
+
+npm install express (ver package.json)
+
+
+importante: en el index.js mantener el force:false. Si lo ponemos en true hace un DROP de todas
+las tablas y las vuelve a generar vacias, perdemos los datos.
+
+
+TODOS: 
+    manejar correctamente el ruteo
+    Controllers
+    cargar datos de prueba
+    
