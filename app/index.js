@@ -30,6 +30,12 @@ router.get("/crearViaje", (req, res) => {
 router.get("/perfil", (req, res) => {
     res.sendFile(path.join(__dirname + "/views/perfil.html"));
 });
+router.get("/login", (req, res) => {
+    res.sendFile(path.join(__dirname + "/views/login.html"));
+});
+router.get("/registrarse", (req, res) => {
+    res.sendFile(path.join(__dirname + "/views/registrarse.html"));
+});
 
 //RUTAS DE LA API
 
