@@ -50,7 +50,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
-        id: '2',
+        id: '26',
         descripcion: 'Ninguno',
         estadoPasajeroId: '1',
         viajeId:'1',
@@ -59,8 +59,8 @@ module.exports = {
         updatedAt: new Date()
         },
         {
-        id: '3',
-        descripcion: 'Llevo muchisimo equipaje, 2 bolsos grandes y 2 mochilas.',
+        id: '7',
+        descripcion: 'Llevo muchisimo equipaje, 2 bolsos grandes.',
         estadoPasajeroId: '1',
         viajeId:'1',
         personaId:'7',
