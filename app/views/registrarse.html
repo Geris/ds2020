@@ -1,121 +1,132 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="h-100">
   <ui-head ruta="Registrarse"></ui-head>
-  <body style="background-color: #489aff">
-    <div class="container" style="max-width: 600px">
-      <div
-        class="container card"
-        style="
-          margin-top: 80px;
-          background-color: #e2e2e2;
-          box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.2), 
-            0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        "
-      >
-        <h2 class="card-title text-primary text-center mt-3">Registrarse</h2>
-        <form method="post" class="row mt-2 mb-4">
-          <div class="row mx-auto">
-            <div class="col-6">
-              <label class="fw-bold" for="nombre">Nombre completo</label class="fw-bold">
-              <input
-                type="text"
-                class="form-control mt-1"
-                id="nombre"
-                placeholder="Nombre Apellido"
-                required
-              />
-            </div>
-            <div class="col-6">
-              <label class="fw-bold" for="email">Email</label class="fw-bold">
-              <input
-                type="email"
-                class="form-control mt-1"
-                id="email"
-                placeholder="email@ejemplo.com"
-                required
-              />
-            </div>
-          </div>
+  <body class="h-100">
+    <div class="row h-100 mx-0">
+      <div class="col-5 mx-0 d-flex justify-content-end align-items-center">
+        <img src="img/registrarse.png" alt="" style="max-width: 85%" />
+      </div>
+      <div class="col-7 mx-0 d-flex justify-content-center align-items-center">
+        <div class="container" style="max-width: 600px">
+          <div
+            class="container card"
+            style="
+              border-radius: 13px;
+              background-color: #e2e2e2;
+              box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.2),
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            "
+          >
+            <h2 class="card-title text-primary text-center mt-3">
+              Registrarse
+            </h2>
+            <form method="post" class="row mt-2 mb-4">
+              <div class="row mx-auto">
+                <div class="col-6">
+                  <label class="fw-bold" for="nombre">Nombre completo</label>
+                  <input
+                    type="text"
+                    class="form-control mt-1"
+                    id="nombre"
+                    placeholder="Nombre Apellido"
+                    required
+                  />
+                </div>
+                <div class="col-6">
+                  <label class="fw-bold" for="email">Email</label>
+                  <input
+                    type="email"
+                    class="form-control mt-1"
+                    id="email"
+                    placeholder="email@ejemplo.com"
+                    required
+                  />
+                </div>
+              </div>
 
-          <div class="row mx-auto mt-2">
-            <div class="col-6">
-              <label class="fw-bold" for="password">Contraseña</label class="fw-bold">
-              <input
-                type="password"
-                minlength="8"
-                class="form-control mt-1"
-                id="password"
-                placeholder="Contraseña (min. 8 caracteres)"
-                required
-              />
-            </div>
-            <div class="col-6">
-              <label class="fw-bold" for="repetirPassword">Repetir contraseña</label class="fw-bold">
-              <input
-                type="password"
-                minlength="8"
-                class="form-control mt-1"
-                id="repetirPassword"
-                placeholder="Repetir contraseña"
-                required
-              />
-            </div>
-          </div>
+              <div class="row mx-auto mt-2">
+                <div class="col-6">
+                  <label class="fw-bold" for="password">Contraseña</label>
+                  <input
+                    type="password"
+                    minlength="8"
+                    class="form-control mt-1"
+                    id="password"
+                    placeholder="Contraseña (min. 8 caracteres)"
+                    required
+                  />
+                </div>
+                <div class="col-6">
+                  <label class="fw-bold" for="repetirPassword"
+                    >Repetir contraseña</label
+                  >
+                  <input
+                    type="password"
+                    minlength="8"
+                    class="form-control mt-1"
+                    id="repetirPassword"
+                    placeholder="Repetir contraseña"
+                    required
+                  />
+                </div>
+              </div>
 
-          <div class="row mx-auto mt-2">
-            <div class="col-6">
-              <label class="fw-bold" for="dni">DNI (sin puntos)</label class="fw-bold">
-              <input
-                type="text"
-                class="form-control mt-1"
-                id="dni"
-                placeholder="Ejemplo: 44555666"
-                required
-              />
-            </div>
-            <div class="col-6">
-              <label class="fw-bold" for="edad">Edad</label class="fw-bold">
-              <input
-                type="number"
-                min="18"
-                step="1"
-                class="form-control mt-1"
-                id="edad"
-                placeholder="Edad"
-                required
-              />
-            </div>
-          </div>
+              <div class="row mx-auto mt-2">
+                <div class="col-6">
+                  <label class="fw-bold" for="dni">DNI (sin puntos)</label>
+                  <input
+                    type="text"
+                    class="form-control mt-1"
+                    id="dni"
+                    placeholder="Ejemplo: 44555666"
+                    required
+                  />
+                </div>
+                <div class="col-6">
+                  <label class="fw-bold" for="edad">Edad</label>
+                  <input
+                    type="number"
+                    min="18"
+                    step="1"
+                    class="form-control mt-1"
+                    id="edad"
+                    placeholder="Edad"
+                    required
+                  />
+                </div>
+              </div>
 
-          <div class="row mx-auto mt-2">
-            <div class="col-6">
-              <label class="fw-bold" for="imagen">Foto de perfil</label class="fw-bold">
-              <input
-                type="file"
-                class="form-control mt-1"
-                id="imagen"
-                aria-label="Upload"
-                required
-              />
-            </div>
-            <div class="col-6">
-              <button
-                type="submit"
-                class="btn btn-primary"
-                style="margin-top: 27px"
-              >
-                Registrarse
-              </button>
-            </div>
+              <div class="row mx-auto mt-2">
+                <div class="col-6">
+                  <label class="fw-bold" for="imagen">Foto de perfil</label>
+                  <input
+                    type="file"
+                    class="form-control mt-1"
+                    id="imagen"
+                    aria-label="Upload"
+                    required
+                  />
+                </div>
+                <div class="col-6">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="margin-top: 27px"
+                  >
+                    Registrarse
+                  </button>
+                </div>
+              </div>
+              <div class="row mx-auto mt-3 text-center">
+                <div class="col-12">
+                  <a class="text-danger" href="/login"
+                    >¿Ya tenes cuenta? Inicia sesion</a
+                  >
+                </div>
+              </div>
+            </form>
           </div>
-          <div class="row mx-auto mt-3 text-center">
-            <div class="col-12">
-              <a class="text-danger" href="/login"
-              >¿Ya tenes cuenta? Inicia sesion</a
-            >
-            </div>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
 
