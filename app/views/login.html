@@ -1,8 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-  <ui-head ruta="Iniciar Sesion">
-  </ui-head>
-  <body>
+<html lang="es">
+  <ui-head ruta="Iniciar sesion"></ui-head>
+  <body style="background-color: #489aff">
+    <div class="container" style="max-width: 500px">
+      <div
+        class="container card"
+        style="
+          margin-top: 80px;
+          background-color: #e2e2e2;
+          box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.2),
+            0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        "
+      >
+        <h2 class="card-title text-primary text-center mt-3">Iniciar sesion</h2>
+        <form method="post" class="row mt-2 mb-4">
+          <div class="row mx-auto">
+            <div class="col-12 mx-auto" style="max-width: 400px">
+              <label class="fw-bold" for="email">Email</label>
+              <input
+                type="email"
+                class="form-control mx-auto mt-1"
+                id="email"
+                placeholder="email@ejemplo.com"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row mx-auto mt-2">
+            <div class="col-12 mx-auto" style="max-width: 400px">
+              <label class="fw-bold" for="password">Contraseña</label>
+              <input
+                type="password"
+                minlength="8"
+                class="form-control mt-1"
+                id="password"
+                placeholder="Contraseña (min. 8 caracteres)"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row mx-auto mt-3 text-center">
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">
+                Iniciar sesion
+              </button>
+            </div>
+            <a class="text-danger mt-3" href="/registrarse"
+              >¿No tenes cuenta? Registrate</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+
     <!------ Dependencias ------>
     <!-- Bootstrap -->
     <script
@@ -18,6 +70,5 @@
     ></script>
     <!-- Componentes -->
     <script src="js/head.js"></script>
-    <script src="js/navbar.js"></script>
   </body>
 </html>
