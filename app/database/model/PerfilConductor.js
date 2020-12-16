@@ -1,24 +1,24 @@
-
-
-const {Model, DataTypes} = require('sequelize');
-const sequelize = require('../dbconfig');
-
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../dbconfig");
 
 class PerfilConductor extends Model {}
 
-PerfilConductor.init({
+PerfilConductor.init(
+  {
     id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
     contrasenia: DataTypes.STRING(45),
     imagen: DataTypes.STRING(45),
-    mail: DataTypes.STRING(45)
-}, {
-    sequelize, 
+    mail: DataTypes.STRING(45),
+  },
+  {
+    sequelize,
     modelName: "perfilConductor",
-    freezeTableName: true
-});
+    freezeTableName: true,
+  }
+);
 
 module.exports = PerfilConductor;
