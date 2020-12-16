@@ -11,22 +11,26 @@
         <form method="post" class="row">
           <div class="col">
             <div class="m-2">
-              <label for="input2" class="form-label">Fecha</label>
-              <input type="date" class="form-control" id="input2" />
+              <label for="fecha" class="form-label">Fecha</label>
+              <input type="date" class="form-control" id="fecha" />
             </div>
             <div class="m-2">
-              <label for="input3" class="form-label">Hora de Inicio</label>
-              <input type="time" class="form-control" id="input3" />
+              <label for="horaInicio" class="form-label">Hora de Inicio</label>
+              <input type="time" class="form-control" id="horaInicio" />
             </div>
             <div class="m-2">
-              <label for="input1" class="form-label">Precio Total</label>
-              <input type="number" class="form-control" id="input1" />
+              <label for="precioTotal" class="form-label">Precio Total</label>
+              <input type="number" class="form-control" id="precioTotal" />
             </div>
           </div>
           <div class="col">
             <div class="m-2">
               <label class="mb-2">Vehiculo</label>
-              <select class="form-select" aria-label="Default select example">
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                id="vehiculo"
+              >
                 <option selected>Seleccione el vehículo</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
@@ -34,17 +38,21 @@
               </select>
             </div>
             <div class="m-2">
-              <label for="extarea" class="form-label">Observaciones</label>
-              <textarea class="form-control" id="textarea" rows="2"></textarea>
+              <label for="observacion" class="form-label">Observaciones</label>
+              <textarea
+                class="form-control"
+                id="observacion"
+                rows="2"
+              ></textarea>
             </div>
             <div class="m-2 mt-4">
               <input
                 class="form-check-input"
                 type="checkbox"
                 value=""
-                id="flexCheckDefault"
+                id="equipaje"
               />
-              <label class="form-check-label" for="flexCheckDefault">
+              <label class="form-check-label" for="equipaje">
                 ¿Se permite equipaje?
               </label>
             </div>
@@ -55,7 +63,7 @@
               <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <a
                   class="nav-link active"
-                  id="nav-home-tab"
+                  id="origen"
                   data-bs-toggle="tab"
                   href="#nav-home"
                   role="tab"
@@ -65,7 +73,7 @@
                 >
                 <a
                   class="nav-link"
-                  id="nav-profile-tab"
+                  id="destino"
                   data-bs-toggle="tab"
                   href="#nav-profile"
                   role="tab"
@@ -85,20 +93,31 @@
                 <div class="row">
                   <div class="col">
                     <div class="m-2">
-                      <label for="input1" class="form-label">Localidad</label>
-                      <input type="text" class="form-control" id="input1" />
+                      <label for="localidadOrigen" class="form-label"
+                        >Localidad</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="localidadOrigen"
+                      />
                     </div>
                     <div class="m-2">
-                      <label for="input1" class="form-label">Calle</label>
-                      <input type="text" class="form-control" id="input1" />
+                      <label for="calleOrigen" class="form-label">Calle</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="calleOrigen"
+                      />
                     </div>
                   </div>
                   <div class="col">
                     <div class="m-2">
-                      <label class="mb-2">Vehiculo</label>
+                      <label class="mb-2">Localidad</label>
                       <select
                         class="form-select"
                         aria-label="Default select example"
+                        id="localidadSeleccionadaOrigen"
                       >
                         <option selected>Seleccione la localidad</option>
                         <option value="1">One</option>
@@ -107,8 +126,14 @@
                       </select>
                     </div>
                     <div class="m-2">
-                      <label for="input1" class="form-label">Numero</label>
-                      <input type="number" class="form-control" id="input1" />
+                      <label for="numeroCalleOrigen" class="form-label"
+                        >Numero</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="numeroCalleOrigen"
+                      />
                     </div>
                   </div>
                 </div>
@@ -122,20 +147,31 @@
                 <div class="row">
                   <div class="col">
                     <div class="m-2">
-                      <label for="input1" class="form-label">Localidad</label>
-                      <input type="text" class="form-control" id="input1" />
+                      <label for="localidadDestino" class="form-label"
+                        >Localidad</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="localidadDestino"
+                      />
                     </div>
                     <div class="m-2">
-                      <label for="input1" class="form-label">Calle</label>
-                      <input type="text" class="form-control" id="input1" />
+                      <label for="calleDestino" class="form-label">Calle</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="calleDestino"
+                      />
                     </div>
                   </div>
                   <div class="col">
                     <div class="m-2">
-                      <label class="mb-2">Vehiculo</label>
+                      <label class="mb-2">Localidad</label>
                       <select
                         class="form-select"
                         aria-label="Default select example"
+                        id="localidadSeleccionadaDestino"
                       >
                         <option selected>Seleccione la localidad</option>
                         <option value="1">One</option>
@@ -144,8 +180,14 @@
                       </select>
                     </div>
                     <div class="m-2">
-                      <label for="input1" class="form-label">Numero</label>
-                      <input type="number" class="form-control" id="input1" />
+                      <label for="numeroDestino" class="form-label"
+                        >Numero</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="numeroDestino"
+                      />
                     </div>
                   </div>
                 </div>
@@ -168,7 +210,7 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"
     ></script>
-    <script src="js/index.js"></script>
+    <script src="jQuery/crearViaje.js"></script>
     <!-- Componentes -->
     <script src="js/head.js"></script>
     <script src="js/navbar.js"></script>
