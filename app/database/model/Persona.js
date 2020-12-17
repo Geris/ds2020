@@ -1,22 +1,24 @@
-
-const {Model, DataTypes} = require('sequelize');
-const sequelize = require('../dbconfig');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../dbconfig");
 
 class Persona extends Model {}
 
-Persona.init({
+Persona.init(
+  {
     id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
     dni: DataTypes.STRING(45),
     edad: DataTypes.STRING(45),
     nombre: DataTypes.STRING(45),
-}, {
-    sequelize, 
+  },
+  {
+    sequelize,
     modelName: "persona",
-    freezeTableName: true
-});
+    freezeTableName: true,
+  }
+);
 
 module.exports = Persona;
