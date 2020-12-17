@@ -16,7 +16,7 @@ Viaje.init({
     horaFin: DataTypes.DATE,
     precioPorPersona: DataTypes.FLOAT,
     precioTotal: DataTypes.FLOAT,
-    posibilidadEquipaje:DataTypes.TINYINT,
+    posibilidadEquipaje:DataTypes.BOOLEAN,
     observacion: DataTypes.STRING
 }, {
     sequelize, 
