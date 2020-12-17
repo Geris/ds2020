@@ -21,6 +21,9 @@ $(() => {
       });
     },
   });
+  let usuarioActual = JSON.parse(localStorage.getItem("usuarioLogueado"));
+  console.log(usuarioActual);
+
   $.ajax({
     type: "get",
     url: "http://localhost:3000/api/vehiculo",
@@ -28,7 +31,14 @@ $(() => {
     dataType: "json",
     success: (vehiculos) => {
       vehiculos.forEach((vehiculo) => {
-        console.log(vehiculo);
+        if (vehiculo.perfilConductorId === usuarioActual.conductorId) {
+          $("#vehiculo").append(
+            $("<option>", {
+              value: vehiculo.id,
+              text: vehiculo.patente,
+            })
+          );
+        }
       });
     },
   });
