@@ -54,6 +54,8 @@ PerfilConductorEstado.hasMany(PerfilConductor);
 //un vehiculo es de un conductor
 Vehiculo.belongsTo(PerfilConductor);
 
+//Viaje.hasOne(Vehiculo);
+
 //un conductor tiene muchos vehiculos
 PerfilConductor.hasMany(Vehiculo);
 
