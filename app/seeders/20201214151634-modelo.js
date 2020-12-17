@@ -24,6 +24,13 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date()
       },
+      {
+          id: '4',
+          nombre: 'Cronos',
+          marcaId: '3',
+          createdAt: new Date(),
+          updatedAt: new Date()
+      },
     ]);
   },
 
