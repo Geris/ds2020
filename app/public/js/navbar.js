@@ -56,9 +56,10 @@ class Navbar extends HTMLElement {
   }
 
   getNombreUsuario() {
-    return JSON.parse(
+    /*return JSON.parse(
       localStorage.getItem("usuarioLogueado")
-    ).nombre.toLowerCase();
+    ).nombre.toLowerCase();*/
+    return "Florencia Fried"
   }
 
   getLinks() {
