@@ -16,7 +16,7 @@ module.exports = {
       id: '2',
       calle: '5',
       numero: '822',
-      localidadId:'2',
+      localidadId:'3',
       createdAt: new Date(),
       updatedAt: new Date()
       },
