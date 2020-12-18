@@ -1,83 +1,74 @@
-$(() => {
-  $("#boton").on("click", () => {
-    if (datosValidos()) {
-      var domicilioOrigen = JSON.stringify({
-        calle: $("#calleOrigen").val(),
-        numero: parseInt($("#numeroCalleOrigen").val()),
-        localidadId: parseInt($("#localidadSeleccionadaOrigen").val()),
-      });
+$("#boton").on("click", () => {
+  if (datosValidos()) {
+    var domicilioOrigen = JSON.stringify({
+      calle: $("#calleOrigen").val(),
+      numero: parseInt($("#numeroCalleOrigen").val()),
+      localidadId: parseInt($("#localidadSeleccionadaOrigen").val()),
+    });
+    var domicilioDestino = JSON.stringify({
+      calle: $("#calleDestino").val(),
+      numero: parseInt($("#numeroDestino").val()),
+      localidadId: parseInt($("#localidadSeleccionadaDestino").val()),
+    });
 
-      $done = false;
-      $origenId = null;
-      $destinoId = null;
+    $done = false;
+    $origenId = null;
+    $destinoId = null;
+    $.when(
       $.when(
-        $.when(
-          $.ajax({
-            type: "post",
-            url: "http://localhost:3000/api/domicilio",
-            data: domicilioOrigen,
-            contentType: "application/json",
-            dataType: "json",
-            success: (respuesta) => {
-              $done = true;
-              $origenId = respuesta.id;
-            },
-            error: () => {
-              $done = false;
-              $("#error").html(
-                "<p class='text-danger fw-bold'>Hubo un error!</p>"
-              );
-            },
-          })
-        ).done(() => {
-          if ($done) {
-            var domicilioDestino = JSON.stringify({
-              calle: $("#calleDestino").val(),
-              numero: parseInt($("#numeroDestino").val()),
-              localidadId: parseInt($("#localidadSeleccionadaDestino").val()),
-            });
-
-            $.ajax({
-              type: "post",
-              url: "http://localhost:3000/api/domicilio",
-              data: domicilioDestino,
-              contentType: "application/json",
-              dataType: "json",
-              success: (respuesta) => {
-                $done = true;
-                $destinoId = respuesta.id;
-              },
-              error: () => {
-                $done = false;
-                $("#error").html(
-                  "<p class='text-danger fw-bold'>Hubo un error!</p>"
-                );
-              },
-            });
-          } else {
+        $.ajax({
+          type: "post",
+          url: "http://localhost:3000/api/domicilio",
+          data: domicilioOrigen,
+          contentType: "application/json",
+          dataType: "json",
+          success: (respuesta) => {
+            $done = true;
+            $origenId = respuesta.id;
+          },
+          error: () => {
             $("#error").html(
               "<p class='text-danger fw-bold'>Hubo un error!</p>"
             );
-          }
+          },
+        }),
+
+        $.ajax({
+          type: "post",
+          url: "http://localhost:3000/api/domicilio",
+          data: domicilioDestino,
+          contentType: "application/json",
+          dataType: "json",
+          success: (respuesta) => {
+            $done = true;
+            $destinoId = respuesta.id;
+            console.log($destinoId);
+          },
+          error: () => {
+            $done = false;
+            $("#error").html(
+              "<p class='text-danger fw-bold'>Hubo un error!</p>"
+            );
+          },
         })
       ).done(() => {
         if ($done) {
           //console.log($("#vehiculo").val());
-          //console.log('ID',$destinoId)
 
           let viaje = JSON.stringify({
             fecha: $("#fecha").val(),
-            horaInicio: $("#horaInicio").val(),
-            horaFin: null,
             precioPorPersona: null,
             precioTotal: parseFloat($("#precioTotal").val()),
             posibilidadEquipaje: $("#equipaje").prop("checked"),
             observacion: $("#observaciones").val(),
+            estadoViajeId: 1,
             origenId: parseInt($origenId),
             destinoId: parseInt($destinoId),
+            horaInicio: $("#horaInicio").val(),
+            horaFin: null,
           });
 
-          //console.log(viaje);
+          console.log(viaje);
 
           $.ajax({
             type: "post",
@@ -97,15 +88,25 @@ $(() => {
         } else {
           $("#error").html("<p class='text-danger fw-bold'>Hubo un error!</p>");
         }
-      });
-    } else {
-      $("#error").html(
-        "<p class='text-danger fw-bold'>Todos los datos son obligatorios!</p>"
-      );
-    }
-  });
+      })
+    );
+  } else {
+    $("#error").html(
+      "<p class='text-danger fw-bold'>Todos los datos son obligatorios!</p>"
+    );
+  }
 });
 
 function datosValidos() {
-  return true;
+  return (
+    $("#calleOrigen").val() !== "" &&
+    $("#numeroCalleOrigen").val() !== "" &&
+    $("#localidadSeleccionadaOrigen").val() !== "" &&
+    $("#calleDestino").val() !== "" &&
+    $("#numeroDestino").val() !== "" &&
+    $("#localidadSeleccionadaDestino").val() !== "" &&
+    $("#fecha").val() !== "" &&
+    $("#precioTotal").val() !== "" &&
+    $("#horaInicio").val() !== ""
+  );
 }

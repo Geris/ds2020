@@ -22,7 +22,6 @@ $(() => {
     },
   });
   let usuarioActual = JSON.parse(localStorage.getItem("usuarioLogueado"));
-  console.log(usuarioActual);
 
   $.ajax({
     type: "get",
