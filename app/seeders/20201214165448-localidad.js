@@ -18,6 +18,13 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
       },
+      {
+      id: '3',
+      nombre: 'La Plata',
+      provinciumId:'1',
+      createdAt: new Date(),
+      updatedAt: new Date()
+      },
     ]);
   },
 
