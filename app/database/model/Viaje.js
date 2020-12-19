@@ -12,8 +12,8 @@ Viaje.init({
         autoIncrement: true
     },
     fecha: DataTypes.DATEONLY,
-    horaInicio: DataTypes.DATE,
-    horaFin: DataTypes.DATE,
+    horaInicio: DataTypes.STRING,
+    horaFin: DataTypes.STRING,
     precioPorPersona: DataTypes.FLOAT,
     precioTotal: DataTypes.FLOAT,
     posibilidadEquipaje:DataTypes.BOOLEAN,

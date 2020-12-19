@@ -41,7 +41,7 @@ $(() => {
                 },
               }).done(() => {
                  
-                if (viaje.perfilConductorId !== usuarioActual.conductorId) {
+                if (viaje.perfilConductorId === usuarioActual.conductorId) {
                   $concidencia = 1;
                   $html += `
             <div class="border border-3 rounded m-2 p-3 row">

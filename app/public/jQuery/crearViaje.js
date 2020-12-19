@@ -58,14 +58,17 @@ $("#boton").on("click", () => {
           let viaje = JSON.stringify({
             fecha: $("#fecha").val(),
             precioPorPersona: null,
+            horaInicio: $("#horaInicio").val(),
+            horaFin: null,
+            perfilConductorId: parseInt(
+              JSON.parse(localStorage.getItem("usuarioLogueado")).conductorId
+            ).conductorId,
             precioTotal: parseFloat($("#precioTotal").val()),
             posibilidadEquipaje: $("#equipaje").prop("checked"),
             observacion: $("#observaciones").val(),
             estadoViajeId: 1,
             origenId: parseInt($origenId),
             destinoId: parseInt($destinoId),
-            horaInicio: $("#horaInicio").val(),
-            horaFin: null,
           });
 
           console.log(viaje);
@@ -78,6 +81,7 @@ $("#boton").on("click", () => {
             dataType: "json",
             success: (respuesta) => {
               console.log("RESPUESTA VIAJE", respuesta);
+              //$(location).attr("href", "/index.html");
             },
             error: () => {
               $("#error").html(
