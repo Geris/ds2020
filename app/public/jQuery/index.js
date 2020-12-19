@@ -1,25 +1,24 @@
 $(() => {
-    $.ajax({
-      type: "get",
-      url: "http://localhost:3000/api/viaje",
-      contentType: "application/json",
-      dataType: "json",
-      success: (viajes) => {
-        $html = "";
-        viajes.forEach((viaje) => {
-          if (viaje.horaFin == null) {
-            var nombreEstado;
-            $.ajax({
-              type: "get",
-              url: "http://localhost:3000/api/estadoViaje/" + viaje.estadoViajeId,
-              contentType: "application/json",
-              dataType: "json",
-              success: (estado) => {
-                nombreEstado = estado.nombre;
-                console.log(estado.nombre);
-              },
-            }).done(() => {
-              $html += `
+  $.ajax({
+    type: "get",
+    url: "http://localhost:3000/api/viaje",
+    contentType: "application/json",
+    dataType: "json",
+    success: (viajes) => {
+      $html = "";
+      viajes.forEach((viaje) => {
+        if (viaje.horaFin == null) {
+          var nombreEstado;
+          $.ajax({
+            type: "get",
+            url: "http://localhost:3000/api/estadoViaje/" + viaje.estadoViajeId,
+            contentType: "application/json",
+            dataType: "json",
+            success: (estado) => {
+              nombreEstado = estado.nombre;
+            },
+          }).done(() => {
+            $html += `
               <div class="border border-3 rounded m-2 p-3 row">
                 <div class="col">
                   <div class="m-2">
@@ -60,11 +59,10 @@ $(() => {
                 </div>
               </div>
               `;
-              $("#viajes").html($html);
-            });
-          }
-        });
-      },
-    });
+            $("#viajes").html($html);
+          });
+        }
+      });
+    },
   });
-  
+});

@@ -13,7 +13,7 @@ module.exports = {
         posibilidadEquipaje: true,
         precioPorPersona: null,
         precioTotal: 8999.99,
-        perfilConductorId: "2",
+        perfilConductorId: "3",
         origenId: "2",
         destinoId: "3",
         createdAt: new Date(),
