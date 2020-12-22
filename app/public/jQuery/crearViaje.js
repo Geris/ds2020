@@ -42,7 +42,6 @@ $("#boton").on("click", () => {
           success: (respuesta) => {
             $done = true;
             $destinoId = respuesta.id;
-            console.log($destinoId);
           },
           error: () => {
             $done = false;
@@ -58,11 +57,9 @@ $("#boton").on("click", () => {
           let viaje = JSON.stringify({
             fecha: $("#fecha").val(),
             precioPorPersona: null,
-            horaInicio: $("#horaInicio").val(),
+            //horaInicio: $("#horaInicio").val(),
             horaFin: null,
-            perfilConductorId: parseInt(
-              JSON.parse(localStorage.getItem("usuarioLogueado")).conductorId
-            ).conductorId,
+            perfilConductorId: parseInt(JSON.parse(localStorage.getItem("usuarioLogueado")).conductorId),
             precioTotal: parseFloat($("#precioTotal").val()),
             posibilidadEquipaje: $("#equipaje").prop("checked"),
             observacion: $("#observaciones").val(),
