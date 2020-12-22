@@ -1,14 +1,30 @@
 class Link extends HTMLElement {
   constructor() {
     super();
-    this.innerHTML = `
-    <a 
-      class="nav-link text-white text-decoration-none text-capitalize"
-      href="${this.getAttribute("href")}"
-    >
-      ${this.getAttribute("texto")}
-    </a>
-    `;
+    if (this.getAttribute("texto") !== "Cerrar Sesion") {
+      this.innerHTML = `
+      <a 
+        class="nav-link text-white text-decoration-none text-capitalize"
+        href="${this.getAttribute("href")}"
+      >
+        ${this.getAttribute("texto")}
+      </a>
+      `;
+    } else {
+      this.innerHTML = `
+      <a 
+        class="nav-link text-white text-decoration-none text-capitalize"
+        href="${this.getAttribute("href")}"
+        onclick="${this.logout()}"
+      >
+        ${this.getAttribute("texto")}
+      </a>
+      `;
+    }
+  }
+
+  logout() {
+    localStorage.removeItem("usuarioLogueado");
   }
 }
 
@@ -18,6 +34,7 @@ class Navbar extends HTMLElement {
   links = [
     { href: "/crearViaje", texto: "Crear Viaje" },
     { href: "/verViajes", texto: "Ver Viajes" },
+    { href: "/login", texto: "Cerrar Sesion" },
   ];
 
   constructor() {
@@ -56,10 +73,9 @@ class Navbar extends HTMLElement {
   }
 
   getNombreUsuario() {
-    /*return JSON.parse(
+    return JSON.parse(
       localStorage.getItem("usuarioLogueado")
-    ).nombre.toLowerCase();*/
-    return "Florencia Fried"
+    ).nombre.toLowerCase();
   }
 
   getLinks() {

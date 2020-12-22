@@ -1,7 +1,7 @@
 $(() => {
   let usuarioActual = JSON.parse(localStorage.getItem("usuarioLogueado"));
   $html = `
-        <h4> ${usuarioActual.nombre}</h4>
+        <h4 class="text-capitalize"> ${usuarioActual.nombre}</h4>
         
         <div class="row mt-4">
             <div class="col">
@@ -48,30 +48,30 @@ $(() => {
               console.log("MARCA", marca.nombre);
             },
           }).done(() => {
-            //if (vehiculo.perfilConductorId === usuarioActual.conductorId) {
-            $html += `
-            <div class="border border-3 rounded m-2 p-3 row">
-                <div class="col-9">
-                    <p>Modelo: ${modelo.nombre}</p>
-                    <p>Marca: ${marca.nombre}</p>
-                    <p>Patente: ${vehiculo.patente}</p>
-                    <p>Color:  ${vehiculo.color}</p>
-                </div>
-                <div class="col-2 ms-3 mt-3">
-                    <div class="row">
-                        <button type="button" class="btn btn-secondary mt-3">
-                        Editar
-                        </button>
+            if (vehiculo.perfilConductorId === usuarioActual.conductorId) {
+              $html += `
+                <div class="border border-3 rounded m-2 p-3 row">
+                    <div class="col-9">
+                        <p>Modelo: ${modelo.nombre}</p>
+                        <p>Marca: ${marca.nombre}</p>
+                        <p>Patente: ${vehiculo.patente}</p>
+                        <p>Color:  ${vehiculo.color}</p>
                     </div>
-                    <div class="row">
-                        <button type="button" class="btn btn-secondary mt-3">
-                        Eliminar
-                        </button>
+                    <div class="col-2 ms-3 mt-3">
+                        <div class="row">
+                            <button type="button" class="btn btn-secondary mt-3">
+                            Editar
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button type="button" class="btn btn-secondary mt-3">
+                            Eliminar
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-          `;
-            //}
+              `;
+            }
             $("#vehiculos").html($html);
           });
         });

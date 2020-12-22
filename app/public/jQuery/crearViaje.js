@@ -52,14 +52,14 @@ $("#boton").on("click", () => {
         })
       ).done(() => {
         if ($done) {
-          //console.log($("#vehiculo").val());
-
           let viaje = JSON.stringify({
             fecha: $("#fecha").val(),
             precioPorPersona: null,
-            //horaInicio: $("#horaInicio").val(),
+            horaInicio: $("#horaInicio").val(),
             horaFin: null,
-            perfilConductorId: parseInt(JSON.parse(localStorage.getItem("usuarioLogueado")).conductorId),
+            perfilConductorId: parseInt(
+              JSON.parse(localStorage.getItem("usuarioLogueado")).conductorId
+            ),
             precioTotal: parseFloat($("#precioTotal").val()),
             posibilidadEquipaje: $("#equipaje").prop("checked"),
             observacion: $("#observaciones").val(),
@@ -78,7 +78,7 @@ $("#boton").on("click", () => {
             dataType: "json",
             success: (respuesta) => {
               console.log("RESPUESTA VIAJE", respuesta);
-              //$(location).attr("href", "/index.html");
+              $(location).attr("href", "/index.html");
             },
             error: () => {
               $("#error").html(

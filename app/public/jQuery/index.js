@@ -1,4 +1,5 @@
 $(() => {
+  let usuarioActual = JSON.parse(localStorage.getItem("usuarioLogueado"));
   $.ajax({
     type: "get",
     url: "http://localhost:3000/api/viaje",
@@ -7,8 +8,11 @@ $(() => {
     success: (viajes) => {
       $html = "";
       viajes.forEach((viaje) => {
-         var asi = Math.floor((Math.random() * 4) + 1);
-        if (viaje.horaFin == null) {
+        var asi = Math.floor(Math.random() * 4 + 1);
+        if (
+          viaje.horaFin == null &&
+          viaje.perfilConductorId === usuarioActual.conductorId
+        ) {
           var nombreEstado;
           $.ajax({
             type: "get",
@@ -19,16 +23,14 @@ $(() => {
               nombreEstado = estado.nombre;
             },
           }).done(() => {
-            var pate;
+            var vehiculo;
             $.ajax({
               type: "get",
               url: "http://localhost:3000/api/vehiculo/" + viaje.vehiculoId,
               contentType: "application/json",
               dataType: "json",
-              
               success: (pa) => {
-                pate = pa;
-                console.log(viaje.vehiculoId);
+                vehiculo = pa;
               },
             }).done(() => {
               var destino;
@@ -40,10 +42,8 @@ $(() => {
                 success: (de) => {
                   destino = de;
                 },
-
-          }).done(() => {
-
-            $html += `
+              }).done(() => {
+                $html += `
               <div class="border border-3 rounded m-2 p-3 row">
                 <div class="col">
                   <div class="m-2">
@@ -57,7 +57,7 @@ $(() => {
   
                 <div class="col">                    
                   <div class="m-2">
-                    <p>Hacientos: ${asi} </p>
+                    <p>Asientos: ${asi} </p>
                   </div>
   
                   <div class="m-2">
@@ -71,7 +71,7 @@ $(() => {
                   </div>
   
                   <div class="m-2">
-                    <p>Vehiculo: ${pate.patente} </p>
+                    <p>Vehiculo: ${vehiculo.patente} </p>
                   </div>
                 </div>
   
@@ -84,12 +84,12 @@ $(() => {
                 </div>
               </div>
               `;
-            $("#viajes").html($html);
+                $("#viajes").html($html);
+              });
+            });
           });
-        });
-      });
         }
-    });
-   },
+      });
+    },
   });
 });
