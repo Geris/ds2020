@@ -30,14 +30,14 @@ $(() => {
     dataType: "json",
     success: (vehiculos) => {
       vehiculos.forEach((vehiculo) => {
-        if (vehiculo.perfilConductorId === usuarioActual.conductorId) {
+        //if (vehiculo.perfilConductorId === usuarioActual.conductorId) {
           $("#vehiculo").append(
             $("<option>", {
               value: vehiculo.id,
               text: vehiculo.patente,
             })
           );
-        }
+        //}
       });
     },
   });
