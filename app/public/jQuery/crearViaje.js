@@ -52,19 +52,20 @@ $("#boton").on("click", () => {
         })
       ).done(() => {
         if ($done) {
+          //console.log($("#vehiculo").val());
+
           let viaje = JSON.stringify({
             fecha: $("#fecha").val(),
             precioPorPersona: null,
             //horaInicio: $("#horaInicio").val(),
-            //horaFin: null,
-            //perfilConductorId: parseInt(JSON.parse(localStorage.getItem("usuarioLogueado")).conductorId),
+            horaFin: null,
+            perfilConductorId: parseInt(JSON.parse(localStorage.getItem("usuarioLogueado")).conductorId),
             precioTotal: parseFloat($("#precioTotal").val()),
             posibilidadEquipaje: $("#equipaje").prop("checked"),
             observacion: $("#observaciones").val(),
             estadoViajeId: 1,
             origenId: parseInt($origenId),
             destinoId: parseInt($destinoId),
-            //vehiculoId: parseInt($("#vehiculo").val())
           });
 
           console.log(viaje);
