@@ -7,6 +7,7 @@ $(() => {
     success: (viajes) => {
       $html = "";
       viajes.forEach((viaje) => {
+         var asi = Math.floor((Math.random() * 4) + 1);
         if (viaje.horaFin == null) {
           var nombreEstado;
           $.ajax({
@@ -18,6 +19,30 @@ $(() => {
               nombreEstado = estado.nombre;
             },
           }).done(() => {
+            var pate;
+            $.ajax({
+              type: "get",
+              url: "http://localhost:3000/api/vehiculo/" + viaje.vehiculoId,
+              contentType: "application/json",
+              dataType: "json",
+              
+              success: (pa) => {
+                pate = pa;
+                console.log(viaje.vehiculoId);
+              },
+            }).done(() => {
+              var destino;
+              $.ajax({
+                type: "get",
+                url: "http://localhost:3000/api/domicilio/" + viaje.destinoId,
+                contentType: "application/json",
+                dataType: "json",
+                success: (de) => {
+                  destino = de;
+                },
+
+          }).done(() => {
+
             $html += `
               <div class="border border-3 rounded m-2 p-3 row">
                 <div class="col">
@@ -32,11 +57,11 @@ $(() => {
   
                 <div class="col">                    
                   <div class="m-2">
-                    <p>Estado: ${nombreEstado}</p>
+                    <p>Hacientos: ${asi} </p>
                   </div>
   
                   <div class="m-2">
-                    <p>Destino: ${viaje.destino}</p>
+                    <p>Destino: ${destino.calle} numero ${destino.numero} </p>
                   </div>
                 </div>
   
@@ -46,7 +71,7 @@ $(() => {
                   </div>
   
                   <div class="m-2">
-                    <p>Vehiculo: </p>
+                    <p>Vehiculo: ${pate} </p>
                   </div>
                 </div>
   
@@ -61,8 +86,10 @@ $(() => {
               `;
             $("#viajes").html($html);
           });
-        }
+        });
       });
-    },
+        }
+    });
+   },
   });
 });
