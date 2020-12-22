@@ -2,11 +2,17 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.changeColumn (
+    return queryInterface.addColumn(
       'viaje', 
-      'horaInicio',
+      'vehiculoId',
       {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'vehiculo', 
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
       }
     );
   },
