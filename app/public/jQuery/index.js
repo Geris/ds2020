@@ -71,7 +71,7 @@ $(() => {
                   </div>
   
                   <div class="m-2">
-                    <p>Vehiculo: ${pate} </p>
+                    <p>Vehiculo: ${pate.patente} </p>
                   </div>
                 </div>
   
