@@ -7,6 +7,7 @@ $(() => {
     success: (viajes) => {
       $html = "";
       viajes.forEach((viaje) => {
+         var asi = Math.floor((Math.random() * 4) + 1);
         if (viaje.horaFin == null) {
           var nombreEstado;
           $.ajax({
@@ -27,7 +28,7 @@ $(() => {
               
               success: (pa) => {
                 pate = pa;
-                console.log(pa);
+                console.log(viaje.vehiculoId);
               },
             }).done(() => {
               var destino;
@@ -56,7 +57,7 @@ $(() => {
   
                 <div class="col">                    
                   <div class="m-2">
-                    <p>Estado: ${nombreEstado}</p>
+                    <p>Hacientos: ${asi} </p>
                   </div>
   
                   <div class="m-2">
