@@ -48,8 +48,8 @@ $(() => {
               console.log("MARCA", marca.nombre);
             },
           }).done(() => {
-            //if (vehiculo.perfilConductorId === usuarioActual.conductorId) {
-            $html += `
+            if (vehiculo.perfilConductorId === usuarioActual.conductorId) {
+              $html += `
             <div class="border border-3 rounded m-2 p-3 row">
                 <div class="col-9">
                     <p>Modelo: ${modelo.nombre}</p>
@@ -71,7 +71,7 @@ $(() => {
                 </div>
             </div>
           `;
-            //}
+            }
             $("#vehiculos").html($html);
           });
         });
