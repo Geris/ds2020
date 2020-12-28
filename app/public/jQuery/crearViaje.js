@@ -66,6 +66,7 @@ $("#boton").on("click", () => {
             estadoViajeId: 1,
             origenId: parseInt($origenId),
             destinoId: parseInt($destinoId),
+            vehiculoId: $("#vehiculo").val()
           });
 
           console.log(viaje);
@@ -78,7 +79,7 @@ $("#boton").on("click", () => {
             dataType: "json",
             success: (respuesta) => {
               console.log("RESPUESTA VIAJE", respuesta);
-              $(location).attr("href", "/index.html");
+              $(location).attr("href", "/");
             },
             error: () => {
               $("#error").html(

@@ -1,18 +1,20 @@
 $(() => {
   let usuarioActual = JSON.parse(localStorage.getItem("usuarioLogueado"));
+  $concidencia = null;
   $.ajax({
     type: "get",
     url: "http://localhost:3000/api/viaje",
     contentType: "application/json",
     dataType: "json",
     success: (viajes) => {
-      $concidencia = 0;
+      $concidencia=false;
       $html = "";
       viajes.forEach((viaje) => {
         if (
-          viaje.horaFin == null &&
+          viaje.horaFin !== null &&
           viaje.perfilConductorId === usuarioActual.conductorId
         ) {
+          $concidencia = true;
           var nombreEstado;
           $.ajax({
             type: "get",
@@ -31,8 +33,14 @@ $(() => {
               dataType: "json",
               success: (ve) => {
                 vehiculo = ve;
-                console.log("🚀 ~ file: verViajes.js ~ line 34 ~ viajes.forEach ~ vehiculo", vehiculo)
-                console.log("🚀 ~ file: verViajes.js ~ line 29 ~ viajes.forEach ~ viaje.vehiculoId", viaje)
+                console.log(
+                  "🚀 ~ file: verViajes.js ~ line 34 ~ viajes.forEach ~ vehiculo",
+                  vehiculo
+                );
+                console.log(
+                  "🚀 ~ file: verViajes.js ~ line 29 ~ viajes.forEach ~ viaje.vehiculoId",
+                  viaje
+                );
               },
             }).done(() => {
               var destino;
@@ -45,7 +53,6 @@ $(() => {
                   destino = de;
                 },
               }).done(() => {
-                $concidencia = 1;
                 $html += `
                   <div class="border border-3 rounded m-2 p-3 row">
                     <div class="col">
@@ -88,15 +95,19 @@ $(() => {
                   </div>
                   `;
                 $("#viajes").html($html);
-                if ($concidencia === 0) {
-                  $("#error").html("<p>No tiene viajes hasta ahora</p>");
-                }
               });
             });
-              console.log("🚀 ~ file: verViajes.js ~ line 95 ~ viajes.forEach ~ viaje.vehiculoId", viaje.vehiculoId)
+            console.log(
+              "🚀 ~ file: verViajes.js ~ line 95 ~ viajes.forEach ~ viaje.vehiculoId",
+              viaje.vehiculoId
+            );
           });
         }
       });
+      if ($concidencia === false) {
+        console.log($concidencia);
+        $("#error").html("<p>No tiene viajes hasta ahora</p>");
+      }
     },
   });
 });

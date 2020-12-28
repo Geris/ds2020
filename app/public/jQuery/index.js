@@ -1,18 +1,21 @@
 $(() => {
   let usuarioActual = JSON.parse(localStorage.getItem("usuarioLogueado"));
+  $concidencia = null;
   $.ajax({
     type: "get",
     url: "http://localhost:3000/api/viaje",
     contentType: "application/json",
     dataType: "json",
     success: (viajes) => {
+      $concidencia = false;
       $html = "";
       viajes.forEach((viaje) => {
         var asi = Math.floor(Math.random() * 4 + 1);
         if (
-          viaje.horaFin == null &&
+          viaje.horaFin === null &&
           viaje.perfilConductorId === usuarioActual.conductorId
         ) {
+          $concidencia = true;
           var nombreEstado;
           $.ajax({
             type: "get",
@@ -24,6 +27,7 @@ $(() => {
             },
           }).done(() => {
             var vehiculo;
+            console.log(viaje)
             $.ajax({
               type: "get",
               url: "http://localhost:3000/api/vehiculo/" + viaje.vehiculoId,
@@ -31,6 +35,8 @@ $(() => {
               dataType: "json",
               success: (pa) => {
                 vehiculo = pa;
+                console.log(pa)
+                console.log(vehiculo)
               },
             }).done(() => {
               var destino;
@@ -43,6 +49,7 @@ $(() => {
                   destino = de;
                 },
               }).done(() => {
+                console.log(vehiculo)
                 $html += `
               <div class="border border-3 rounded m-2 p-3 row">
                 <div class="col">
@@ -90,6 +97,10 @@ $(() => {
           });
         }
       });
-    },
+      if ($concidencia === false) {
+        console.log($concidencia);
+        $("#error").html("<p>No tiene viajes hasta ahora</p>");
+      }
+    }
   });
 });

@@ -31,6 +31,7 @@ $(() => {
     success: (vehiculos) => {
       vehiculos.forEach((vehiculo) => {
         console.log(vehiculo.perfilConductorId)
+        console.log('ID', vehiculo.id)
         console.log(usuarioActual.conductorId)
         if (vehiculo.perfilConductorId === usuarioActual.conductorId) {
           $("#vehiculo").append(
